@@ -21,6 +21,7 @@ async function loadData() {
         initQuiz();
         loadProgress();
         updateProgress();
+        setupKeyboardNav(); // Nuevo: activar navegación por teclado
     } catch (error) {
         console.error('Error cargando data.json:', error);
     }
@@ -43,11 +44,12 @@ async function buildAccordion(containerId, items, type) {
         button.className = 'accordion-button collapsed fw-bold';
         button.type = 'button';
         button.setAttribute('data-bs-toggle', 'collapse');
-        button.setAttribute('data-bs-target', `#${type}-${item.id}`);
+        // Usar IDs únicos con prefijo accordion-
+        button.setAttribute('data-bs-target', `#accordion-${type}-${item.id}`);
         button.setAttribute('onclick', `markAsRead('${type}', ${item.id})`);
 
         const icon = document.createElement('i');
-        icon.id = `icon-${type}-${item.id}`;
+        icon.id = `icon-accordion-${type}-${item.id}`; // ID único
         icon.className = 'bi bi-circle read-status-icon status-pending';
         button.appendChild(icon);
         button.appendChild(document.createTextNode(' ' + item.title));
@@ -55,7 +57,7 @@ async function buildAccordion(containerId, items, type) {
         header.appendChild(button);
 
         const collapseDiv = document.createElement('div');
-        collapseDiv.id = `${type}-${item.id}`;
+        collapseDiv.id = `accordion-${type}-${item.id}`;
         collapseDiv.className = 'accordion-collapse collapse';
         collapseDiv.setAttribute('data-bs-parent', `#${containerId}`);
 
@@ -109,6 +111,9 @@ function renderFC() {
     doneFC.add(curFC);
     saveProgress();
     updateProgress();
+    // Asegurar que la tarjeta esté en el frente al cambiar
+    const container = document.querySelector('.card-flip-container');
+    if (container) container.classList.remove('flipped');
 }
 
 // Cambiar de flashcard
@@ -116,6 +121,23 @@ function changeFC(dir) {
     if (!data) return;
     curFC = (curFC + dir + data.flashcards.length) % data.flashcards.length;
     renderFC();
+}
+
+// Navegación con teclado (flechas izquierda/derecha)
+function setupKeyboardNav() {
+    window.addEventListener('keydown', (e) => {
+        // Solo actuar si la pestaña de flashcards está activa (opcional)
+        const flashcardsTab = document.getElementById('flashcards');
+        if (!flashcardsTab || !flashcardsTab.classList.contains('show')) return;
+
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            changeFC(-1);
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            changeFC(1);
+        }
+    });
 }
 
 // Inicializar quiz
@@ -185,7 +207,7 @@ function handleQuizAnswer(selectedIdx, correctIdx, explanation, btn) {
         // Respuesta incorrecta: mostrar explicación con prefijo de error
         allOptions.forEach(opt => opt.classList.remove('incorrect'));
         btn.classList.add('incorrect');
-        expDiv.textContent = "❌ Incorrecto."
+        expDiv.textContent = "❌ Incorrecto.";
         expDiv.classList.add('incorrect');
         expDiv.style.display = 'block';
         nextBtn.classList.add('d-none'); // aseguramos que no aparezca
@@ -203,14 +225,14 @@ function nextQuestion() {
 function markAsRead(type, id) {
     if (type === 'lecture') {
         readLectures.add(id);
-        const icon = document.getElementById(`icon-lecture-${id}`);
+        const icon = document.getElementById(`icon-accordion-lecture-${id}`); // ID actualizado
         if (icon) {
             icon.classList.replace('bi-circle', 'bi-check-circle-fill');
             icon.classList.replace('status-pending', 'status-completed');
         }
     } else if (type === 'activity') {
         readActivities.add(id);
-        const icon = document.getElementById(`icon-activity-${id}`);
+        const icon = document.getElementById(`icon-accordion-activity-${id}`); // ID actualizado
         if (icon) {
             icon.classList.replace('bi-circle', 'bi-check-circle-fill');
             icon.classList.replace('status-pending', 'status-completed');
@@ -261,16 +283,16 @@ function loadProgress() {
         doneFC = new Set(progress.doneFC || []);
         doneQ = new Set(progress.doneQ || []);
 
-        // Actualizar iconos de lecturas y actividades
+        // Actualizar iconos de lecturas y actividades con los nuevos IDs
         readLectures.forEach(id => {
-            const icon = document.getElementById(`icon-lecture-${id}`);
+            const icon = document.getElementById(`icon-accordion-lecture-${id}`);
             if (icon) {
                 icon.classList.replace('bi-circle', 'bi-check-circle-fill');
                 icon.classList.replace('status-pending', 'status-completed');
             }
         });
         readActivities.forEach(id => {
-            const icon = document.getElementById(`icon-activity-${id}`);
+            const icon = document.getElementById(`icon-accordion-activity-${id}`);
             if (icon) {
                 icon.classList.replace('bi-circle', 'bi-check-circle-fill');
                 icon.classList.replace('status-pending', 'status-completed');

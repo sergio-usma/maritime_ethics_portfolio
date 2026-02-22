@@ -60,6 +60,22 @@ body {
     text-align: center;
 }
 
+h3 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+h4 {
+    color: var(--primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
 /* ----- PESTAÑAS (énfasis en secundario) ----- */
 .nav-tabs .nav-link.active {
     color: var(--secondary) !important;

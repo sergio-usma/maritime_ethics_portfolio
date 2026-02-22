@@ -2,30 +2,44 @@
     "lectures": [
         {
             "id": 0,
-            "title": "Lecture 01: Ética Profesional Marítima – Fundamentos",
+            "title": "Lectura 1: Fundamentos de ética profesional marítima",
             "file": "lecture_01.html"
         },
         {
             "id": 1,
-            "title": "Lecture 02: Trípode Filosófico – Sócrates, Aristóteles, Kant",
-            "file": "lecture_01.html"
+            "title": "Lectura 2: Trípode filosófico – Sócrates, Aristóteles, Kant",
+            "file": "lecture_02.html"
         },
         {
             "id": 2,
-            "title": "Lecture 03: Sistema Moral, Conciencia y Decisiones a Bordo",
+            "title": "Lectura 3: Sistema moral, conciencia y decisiones a bordo",
             "file": "lecture_03.html"
         }
     ],
     "activities": [
         {
             "id": 0,
-            "title": "Actividad 01: Dilemas éticos en cubierta",
+            "title": "Actividad 1. Dilema Ético Marítimo",
             "file": "actividad_01.html"
         },
         {
             "id": 1,
-            "title": "Actividad 02: Análisis de casos reales",
+            "title": "Actividad 2. Análisis Ético",
             "file": "actividad_02.html"
+        },    {
+            "id": 2,
+            "title": "Actividad 3. Socialización y reflexión",
+            "file": "actividad_03.html"
+        },
+        {
+            "id": 3,
+            "title": "Actividad 4: Análisis de casos reales",
+            "file": "actividad_04.html"
+        },
+        {
+            "id": 4,
+            "title": "Reflexión final",
+            "file": "actividad_05.html"
         }
     ],
     "flashcards": [
@@ -43,7 +57,7 @@
         { "f": "¿Qué significa trazabilidad en el contexto ético marítimo?", "b": "Documentar decisiones (fecha, lugar, fundamentos) para auditorías." },
         { "f": "¿Qué es la inteligencia cultural (CQ)?", "b": "Capacidad de relacionarse en contextos diversos respetando principios universales." },
         { "f": "¿Qué es la complacencia o normalización en seguridad?", "b": "Tendencia a aceptar desviaciones por repetición, erosionando la seguridad." },
-        { "f": "¿Qué es una cultura justa (just culture)?", "b": "Equilibra rendición de cuentas y aprendizaje (error vs negligencia)." },
+        { "f": "¿Qué es una cultura justa?", "b": "Equilibra rendición de cuentas y aprendizaje (error vs negligencia)." },
         { "f": "Según Aristóteles, ¿qué principio debe aplicarse ante presión comercial?", "b": "La prudencia (phronesis) para hallar el justo medio entre temeridad y pasividad." },
         { "f": "¿Qué es la deontología?", "b": "Enfoque ético basado en deberes y reglas (códigos ISM, SOLAS)." },
         { "f": "¿Qué es el consecuencialismo?", "b": "Enfoque que pondera resultados y daños potenciales de una decisión." },
