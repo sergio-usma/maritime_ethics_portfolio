@@ -3,17 +3,17 @@
         {
             "id": 0,
             "title": "Lecture 01: Ética Profesional Marítima – Fundamentos",
-            "file": "Lecture_01.html"
+            "file": "lecture_01.html"
         },
         {
             "id": 1,
             "title": "Lecture 02: Trípode Filosófico – Sócrates, Aristóteles, Kant",
-            "file": "Lecture_02.html"
+            "file": "lecture_01.html"
         },
         {
             "id": 2,
             "title": "Lecture 03: Sistema Moral, Conciencia y Decisiones a Bordo",
-            "file": "Lecture_03.html"
+            "file": "lecture_03.html"
         }
     ],
     "activities": [
