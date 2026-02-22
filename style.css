@@ -1,8 +1,8 @@
 :root {
-    --primary: #1a365d;      /* azul marino oscuro */
-    --secondary: #2b6cb0;    /* azul más claro */
-    --accent: #ed8936;        /* naranja corporativo */
-    --bg: #f0f4f8;            /* fondo claro */
+    --primary: #1a365d;
+    --secondary: #2b6cb0;      /* azul de énfasis */
+    --accent: #ed8936;
+    --bg: #f0f4f8;
     --text: #1a202c;
     --success: #38a169;
     --danger: #e53e3e;
@@ -58,6 +58,20 @@ body {
     font-size: 2rem;
     font-weight: 800;
     text-align: center;
+}
+
+/* ----- PESTAÑAS (énfasis en secundario) ----- */
+.nav-tabs .nav-link.active {
+    color: var(--secondary) !important;
+    border-color: var(--secondary) var(--secondary) #fff !important;
+    font-weight: 700;
+}
+.nav-tabs .nav-link {
+    color: #495057;
+}
+.nav-tabs .nav-link:hover {
+    color: var(--secondary);
+    border-color: transparent;
 }
 
 /* ----- FLIPCARD ----- */
@@ -272,6 +286,12 @@ footer a:hover {
     margin-top: 1rem;
 }
 
+.explanation-box.incorrect {
+    background-color: #f8d7da;
+    border-left-color: var(--danger);
+    color: #721c24;
+}
+
 .progress-custom {
     height: 12px;
     border-radius: 6px;
@@ -297,7 +317,7 @@ footer a:hover {
     border-left-width: 6px;
 }
 
-/* ----- RESPONSIVE ----- */
+/* ----- RESPONSIVE (mejorado) ----- */
 @media (max-width: 768px) {
     .navbar .container {
         flex-wrap: wrap;
@@ -329,6 +349,26 @@ footer a:hover {
     .navbar .fw-semibold {
         font-size: 0.95rem !important;
     }
+
+    /* Ajustes de lectura */
+    .accordion-body {
+        padding: 1rem;
+    }
+    .titulo {
+        font-size: 1.6rem;
+    }
+    .nav-tabs .nav-link {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+    }
+    .quiz-option {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+    .btn {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -345,7 +385,7 @@ footer a:hover {
         height: 60px !important;
     }
     .titulo {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
     .footer-note {
         font-size: 0.8rem;

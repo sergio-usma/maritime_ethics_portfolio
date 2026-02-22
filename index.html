@@ -86,6 +86,15 @@
           <button
             class="nav-link fw-bold"
             data-bs-toggle="tab"
+            data-bs-target="#activities-pane"
+          >
+            <i class="bi bi-clipboard-check me-1"></i> Actividades
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link fw-bold"
+            data-bs-toggle="tab"
             data-bs-target="#flashcards"
           >
             <i class="bi bi-card-text me-1"></i> Flashcards
@@ -112,9 +121,14 @@
       </ul>
 
       <div class="tab-content pt-3">
-        <!-- PESTAÑA DE LECTURAS (acordeón dinámico) -->
+        <!-- PESTAÑA DE LECTURAS -->
         <div class="tab-pane fade show active" id="lectures-pane">
           <div class="accordion" id="lecturesAccordion"></div>
+        </div>
+
+        <!-- PESTAÑA DE ACTIVIDADES -->
+        <div class="tab-pane fade" id="activities-pane">
+          <div class="accordion" id="activitiesAccordion"></div>
         </div>
 
         <!-- PESTAÑA DE FLASHCARDS -->
@@ -166,71 +180,11 @@
           </div>
         </div>
 
-        <!-- PESTAÑA DE RESUMEN -->
+        <!-- PESTAÑA DE RESUMEN (contenido cargado desde summary.html) -->
         <div class="tab-pane fade" id="summary">
-          <section>
-            <h3 class="text-center mb-4">
-              La brújula que nunca falla: ¿por qué la ética lo gobierna todo a
-              bordo?
-            </h3>
-            <p>
-              Si algo queda claro después de navegar por los fundamentos de la
-              ética profesional es que, para un oficial mercante, la ética no es
-              un manual más que se archiva en la cabina. Es, en realidad, la
-              herramienta más práctica que lleva consigo a bordo. Porque en alta
-              mar, cuando la presión comercial aprieta, cuando la fatiga nubla
-              el juicio o cuando nadie parece estar mirando, las decisiones
-              correctas no surgen de la memoria, sino del carácter.
-            </p>
-            <p>
-              Desde los griegos hasta los dilemas actuales, la enseñanza es
-              constante: la ética se construye con hábitos. Aristóteles lo
-              explicaba con una claridad que aún nos interpela: no nacemos
-              virtuosos, llegamos a serlo repitiendo actos correctos. Eso
-              significa que cada guardia, cada reporte, cada maniobra es una
-              oportunidad para forjar ese carácter que luego, en una emergencia,
-              hablará por nosotros. Y en ese punto, Sócrates añade una
-              advertencia necesaria: el mal no siempre nace de la maldad, sino
-              de la ignorancia. Ignorar una norma, minimizar un procedimiento o
-              confiarse ciegamente en la experiencia puede tener las mismas
-              consecuencias que una mala intención.
-            </p>
-            <p>
-              Pero la vida a bordo no es un laboratorio filosófico. Es un
-              espacio donde conviven culturas, donde la jerarquía se cruza con
-              la camaradería y donde la lealtad puede volverse una trampa. Los
-              testimonios de oficiales que han tenido que decidir si reportan a
-              un compañero o si detienen una maniobra por insegura nos recuerdan
-              que lo más difícil no es saber lo correcto, sino hacerlo cuando
-              duele. La empatía nos empuja a mirar hacia otro lado; el deber nos
-              exige actuar. Y ahí, Kant nos deja una pregunta incómoda pero
-              necesaria: ¿podrías desear que todos actuaran como tú estás a
-              punto de hacerlo? Si la respuesta es no, entonces esa decisión no
-              es ética, por más justificada que parezca en el momento.
-            </p>
-            <p>
-              En el contexto marítimo, esta reflexión se traduce en algo muy
-              concreto: la autoridad de parada, el deber de reportar, la
-              obligación de proteger la vida y el medio ambiente. No importa el
-              rango ni la presión de la naviera. La seguridad no se negocia. Y
-              cuando falla la norma, cuando hay silencios cómplices o se
-              normalizan las desviaciones, la ética se convierte en el último
-              dique de contención antes del accidente. Por eso, la cultura justa
-              no es una frase de moda: es el entorno que permite que un
-              tripulante pueda decir "stop" sin miedo a represalias, que se
-              pueda aprender del error sin destruir carreras.
-            </p>
-            <p>
-              Al final, ser un oficial mercante ético no es ser perfecto, sino
-              ser consciente de que cada decisión tiene un peso. Es entender que
-              el cargo no es un privilegio, sino una responsabilidad con quienes
-              navegan con nosotros, con el mar que atravesamos y con la sociedad
-              que espera que la carga llegue a puerto sin daños. La ética es, en
-              definitiva, la brújula que orienta cuando los mapas no bastan. Y
-              en la inmensidad del océano, esa brújula es lo único que nunca
-              debería fallar.
-            </p>
-          </section>
+          <div id="summary-content">
+            <p class="text-muted">Cargando resumen...</p>
+          </div>
         </div>
       </div>
     </main>
