@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio de aprendizaje: Ética Marítima</title>
+    <!-- Bootstrap CSS e iconos -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <!-- Nuestro archivo de estilos -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar py-2">
+      <div class="container d-flex align-items-center">
+        <!-- Bloque izquierdo: logo + textos en columna -->
+        <div class="d-flex align-items-center">
+          <img src="logo_ENAP.png" alt="Logo ENAP" class="logo-enap me-3" />
+          <div
+            class="vr me-3 d-none d-md-block"
+            style="height: 60px; opacity: 0.2"
+          ></div>
+          <div class="d-flex flex-column">
+            <span
+              class="fw-semibold fs-6"
+              style="color: var(--primary); line-height: 1.3"
+              >Escuela Naval de Cadetes Almirante Padilla</span
+            >
+            <span class="small" style="color: var(--primary)"
+              >División de Marina Mercante</span
+            >
+            <span class="small" style="color: var(--primary)"
+              >Programa de Ciencias Náuticas Especialidad Puente</span
+            >
+          </div>
+        </div>
+        <!-- Badge de progreso a la derecha -->
+        <div class="d-flex align-items-center">
+          <span class="badge-flag" id="progressBadge">0 / 0</span>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container my-5">
+      <h1 class="titulo mb-4">
+        Portafolio de aprendizaje: Ética profesional en la marina mercante
+      </h1>
+      <!-- Barra de progreso global -->
+      <div class="mb-5">
+        <div class="d-flex justify-content-between mb-2">
+          <span class="fw-bold text-muted"
+            ><i class="bi bi-bar-chart-fill me-1"></i> Progreso del Módulo
+            Completo</span
+          >
+          <span class="fw-bold" id="progress-text">0/0</span>
+        </div>
+        <div class="progress progress-custom">
+          <div
+            class="progress-bar progress-bar-custom"
+            id="global-progress"
+            role="progressbar"
+            style="width: 0%"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Pestañas -->
+      <ul class="nav nav-tabs mb-4" id="studyTabs" role="tablist">
+        <li class="nav-item">
+          <button
+            class="nav-link active fw-bold"
+            data-bs-toggle="tab"
+            data-bs-target="#lectures-pane"
+          >
+            <i class="bi bi-book me-1"></i> Lecturas
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link fw-bold"
+            data-bs-toggle="tab"
+            data-bs-target="#flashcards"
+          >
+            <i class="bi bi-card-text me-1"></i> Flashcards
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link fw-bold"
+            data-bs-toggle="tab"
+            data-bs-target="#quiz"
+          >
+            <i class="bi bi-ui-checks me-1"></i> Quiz
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link fw-bold"
+            data-bs-toggle="tab"
+            data-bs-target="#summary"
+          >
+            <i class="bi bi-list-check me-1"></i> Resumen
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content pt-3">
+        <!-- PESTAÑA DE LECTURAS (acordeón dinámico) -->
+        <div class="tab-pane fade show active" id="lectures-pane">
+          <div class="accordion" id="lecturesAccordion"></div>
+        </div>
+
+        <!-- PESTAÑA DE FLASHCARDS -->
+        <div class="tab-pane fade" id="flashcards">
+          <div
+            class="card-flip-container"
+            id="fc-container"
+            onclick="this.classList.toggle('flipped')"
+          >
+            <div class="card-flip-inner" id="fc-flip">
+              <div class="card-front shadow">
+                <h3 id="fc-front">Cargando...</h3>
+              </div>
+              <div class="card-back shadow">
+                <p id="fc-back" class="fs-4"></p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-center mt-4 gap-3 align-items-center"
+          >
+            <button class="btn btn-outline-primary" onclick="changeFC(-1)">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+            <span id="fc-counter" class="fw-bold"></span>
+            <button class="btn btn-outline-primary" onclick="changeFC(1)">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- PESTAÑA DE QUIZ -->
+        <div class="tab-pane fade" id="quiz">
+          <div class="card border-0 shadow-sm p-4">
+            <div class="d-flex justify-content-between mb-3">
+              <h4 id="quiz-q-title" class="text-primary">Pregunta</h4>
+              <span id="quiz-prog" class="badge bg-secondary">0/0</span>
+            </div>
+            <p id="quiz-question" class="fs-5 fw-bold"></p>
+            <div id="quiz-options"></div>
+            <div id="quiz-exp" class="explanation-box rounded"></div>
+            <button
+              id="btn-next-q"
+              class="btn btn-primary mt-3 d-none"
+              onclick="nextQuestion()"
+            >
+              Siguiente <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- PESTAÑA DE RESUMEN -->
+        <div class="tab-pane fade" id="summary">
+          <section>
+            <h3 class="text-center mb-4">
+              La brújula que nunca falla: ¿por qué la ética lo gobierna todo a
+              bordo?
+            </h3>
+            <p>
+              Si algo queda claro después de navegar por los fundamentos de la
+              ética profesional es que, para un oficial mercante, la ética no es
+              un manual más que se archiva en la cabina. Es, en realidad, la
+              herramienta más práctica que lleva consigo a bordo. Porque en alta
+              mar, cuando la presión comercial aprieta, cuando la fatiga nubla
+              el juicio o cuando nadie parece estar mirando, las decisiones
+              correctas no surgen de la memoria, sino del carácter.
+            </p>
+            <p>
+              Desde los griegos hasta los dilemas actuales, la enseñanza es
+              constante: la ética se construye con hábitos. Aristóteles lo
+              explicaba con una claridad que aún nos interpela: no nacemos
+              virtuosos, llegamos a serlo repitiendo actos correctos. Eso
+              significa que cada guardia, cada reporte, cada maniobra es una
+              oportunidad para forjar ese carácter que luego, en una emergencia,
+              hablará por nosotros. Y en ese punto, Sócrates añade una
+              advertencia necesaria: el mal no siempre nace de la maldad, sino
+              de la ignorancia. Ignorar una norma, minimizar un procedimiento o
+              confiarse ciegamente en la experiencia puede tener las mismas
+              consecuencias que una mala intención.
+            </p>
+            <p>
+              Pero la vida a bordo no es un laboratorio filosófico. Es un
+              espacio donde conviven culturas, donde la jerarquía se cruza con
+              la camaradería y donde la lealtad puede volverse una trampa. Los
+              testimonios de oficiales que han tenido que decidir si reportan a
+              un compañero o si detienen una maniobra por insegura nos recuerdan
+              que lo más difícil no es saber lo correcto, sino hacerlo cuando
+              duele. La empatía nos empuja a mirar hacia otro lado; el deber nos
+              exige actuar. Y ahí, Kant nos deja una pregunta incómoda pero
+              necesaria: ¿podrías desear que todos actuaran como tú estás a
+              punto de hacerlo? Si la respuesta es no, entonces esa decisión no
+              es ética, por más justificada que parezca en el momento.
+            </p>
+            <p>
+              En el contexto marítimo, esta reflexión se traduce en algo muy
+              concreto: la autoridad de parada, el deber de reportar, la
+              obligación de proteger la vida y el medio ambiente. No importa el
+              rango ni la presión de la naviera. La seguridad no se negocia. Y
+              cuando falla la norma, cuando hay silencios cómplices o se
+              normalizan las desviaciones, la ética se convierte en el último
+              dique de contención antes del accidente. Por eso, la cultura justa
+              no es una frase de moda: es el entorno que permite que un
+              tripulante pueda decir "stop" sin miedo a represalias, que se
+              pueda aprender del error sin destruir carreras.
+            </p>
+            <p>
+              Al final, ser un oficial mercante ético no es ser perfecto, sino
+              ser consciente de que cada decisión tiene un peso. Es entender que
+              el cargo no es un privilegio, sino una responsabilidad con quienes
+              navegan con nosotros, con el mar que atravesamos y con la sociedad
+              que espera que la carga llegue a puerto sin daños. La ética es, en
+              definitiva, la brújula que orienta cuando los mapas no bastan. Y
+              en la inmensidad del océano, esa brújula es lo único que nunca
+              debería fallar.
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p class="foot">
+        Elaborado por
+        <a
+          href="https://www.linkedin.com/in/sergiousma/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Sergio Usma · Ciencias Náuticas 2026
+        </a>
+      </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
